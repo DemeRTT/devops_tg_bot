@@ -1,2 +1,0 @@
-FROM postgres:15
-CMD ["bash", "-c", "rm -rf /var/lib/postgresql/data/* && until pg_basebackup --pgdata=/var/lib/postgresql/data/ -R --slot=replication_slot --host=db --port=5432; do echo 'Waiting for the connection of the main device...'; sleep 1s; done; echo 'Backup is completed, replica is running...'; chown -R postgres:postgres /var/lib/postgresql/data/; chmod 700 /var/lib/postgresql/data; exec su - postgres -c '/usr/lib/postgresql/15/bin/postgres -D /var/lib/postgresql/data';"]
