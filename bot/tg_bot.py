@@ -22,6 +22,7 @@ DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
 
+version = os.getenv('POSTGRES_VERSION')
 
 phoneNumberList = []
 emailAddrList = []
@@ -440,7 +441,7 @@ def get_repl_logs(update: Update, context):
 
     try:
         ssh_client.connect(hostname=SSH_HOST, port=SSH_PORT, username=SSH_USERNAME, password=SSH_PASSWORD)
-        stdin, stdout, stderr = ssh_client.exec_command("docker logs db | grep -i repl")
+        stdin, stdout, stderr = ssh_client.exec_command(f'cat /var/log/postgresql/postgresql-{version}-main.log | tail -n 20')
         data = stdout.read() + stderr.read()
         data = str(data.decode('utf-8')).replace('\\n', '\n').replace('\\t', '\t')[:-1]
         update.message.reply_text(data[-4000:])
