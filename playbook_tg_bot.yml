@@ -94,6 +94,9 @@
         host replication all {{ hostvars[inventory_hostname]['ansible_host'] }}/24 scram-sha-256
         host all all {{ hostvars[inventory_hostname]['ansible_host'] }}/32 trust
 
+  - name: changing the owner of a file postgres
+    command: chmod o+r /var/log/postgresql/postgresql-14-main.log
+
   - name: restarting postgresql with the main database
     service:
       name: postgresql
