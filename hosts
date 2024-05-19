@@ -2,27 +2,27 @@ all:
   vars:
     GIT: https://github.com/DemeRTT/devops_tg_bot
     WORKDIR: /root/ansible
-    RM_HOST: 192.168.0.103
+    RM_HOST: <ip машины, на которой развернётся бот и БД>
     RM_PORT: 22
-    RM_USERNAME: worker1
-    RM_PASSWORD: 1234
+    RM_USERNAME: <пользователь машины, на которой развернётся бот и БД>
+    RM_PASSWORD: <пароль пользователя машины, на которой развернётся бот и БД>
     DB_USER: postgres
-    DB_PASSWORD: Qq12345
-    DB_HOST: 192.168.0.103
+    DB_PASSWORD:
+    DB_HOST: <ip машины, на которой развернется бот и БД>
     DB_PORT: 5432
     DB_DATABASE: db_bot
     DB_REPL_USER: repl_user
     DB_REPL_PASSWORD: Qq12345
-    DB_REPL_HOST: 192.168.0.105
+    DB_REPL_HOST: <ip машины, на которую реплицируется БД>
     DB_REPL_PORT: 5433
     POSTGRES_VERSION: 14
-    TOKEN: 7119878863:AAGjmN_JMI2dv53JdRpNEjICPAiVk99cxME
+    TOKEN: <токен тг-бота>
   hosts:  
     host1:
-      ansible_host: 192.168.0.103
-      ansible_user: ansible
-      ansible_ssh_pass: 1234
+      ansible_host: <ip машины, на которой развернётся бот и БД>
+      ansible_user: <пользователь машины, на которой развернётся бот и БД>
+      ansible_ssh_pass: <пароль пользователя машины, на которой развернётся бот и БД>
     host2:
-      ansible_host: 192.168.0.105
-      ansible_user: ansible
-      ansible_ssh_pass: 1234
+      ansible_host: <ip машины, на которую реплицируется БД>
+      ansible_user: <пользователь машины, на которую реплицируется БД>
+      ansible_ssh_pass: <пароль пользователя машины, на которую реплицируется БД>
