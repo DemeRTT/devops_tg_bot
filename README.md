@@ -16,7 +16,7 @@
 
 3. **Запустите playbook:**
     ```bash
-    
+    ansible-playbook playbook_tg_bot.yml
     ```
 
 **P.s. возможно придётся создать и активировать виртуальное окружение для Python в Linux:**
@@ -26,5 +26,10 @@ cd devops_tg_bot
 
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate   
+source .venv/bin/activate
+```
+
+```bash
+# Далее выполняйте команду
+ansible-playbook playbook_tg_bot.yml
 ```
