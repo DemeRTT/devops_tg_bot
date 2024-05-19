@@ -7,12 +7,12 @@ all:
     RM_USERNAME: <пользователь машины, на которой развернётся бот и БД>
     RM_PASSWORD: <пароль пользователя машины, на которой развернётся бот и БД>
     DB_USER: postgres
-    DB_PASSWORD:
+    DB_PASSWORD: 123
     DB_HOST: <ip машины, на которой развернется бот и БД>
     DB_PORT: 5432
     DB_DATABASE: db_bot
     DB_REPL_USER: repl_user
-    DB_REPL_PASSWORD: Qq12345
+    DB_REPL_PASSWORD: 123
     DB_REPL_HOST: <ip машины, на которую реплицируется БД>
     DB_REPL_PORT: 5433
     POSTGRES_VERSION: 14
@@ -20,9 +20,9 @@ all:
   hosts:  
     host1:
       ansible_host: <ip машины, на которой развернётся бот и БД>
-      ansible_user: <пользователь машины, на которой развернётся бот и БД>
-      ansible_ssh_pass: <пароль пользователя машины, на которой развернётся бот и БД>
+      ansible_user: ansible
+      ansible_ssh_pass: <пароль от ansible на 1 хосте>
     host2:
       ansible_host: <ip машины, на которую реплицируется БД>
-      ansible_user: <пользователь машины, на которую реплицируется БД>
-      ansible_ssh_pass: <пароль пользователя машины, на которую реплицируется БД>
+      ansible_user: ansible
+      ansible_ssh_pass: <пароль от ansible на 2 хосте>
