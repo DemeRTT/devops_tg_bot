@@ -8,29 +8,23 @@
     cd devops_tg_bot
     ```
 
-2. **Создайте и заполните `.env` файл.**
-
-3. **Создайте образы Docker:**
+2. **Измените файл hosts:**
     ```bash
-    # Перейдите в папку bot и создайте образ
-    cd bot
-    docker build -t bot_image .
+    # Пропишите токен тг-бота, хосты, пользователей к хостам и их пароли
+    nano hosts
     ```
 
+3. **Запустите playbook:**
     ```bash
-    # Перейдите в папку db и создайте образ
-    cd ../db
-    docker build -t db_image .
+    
     ```
 
-    ```bash
-    # Перейдите в папку db_repl и создайте образ
-    cd ../db_repl
-    docker build -t db_repl_image .
-    ```
+**P.s. возможно придётся создать и активировать виртуальное окружение для Python в Linux:**
+```bash
+cd devops_tg_bot    
+```
 
-5. **Запустите контейнеры:**
-    ```bash
-    cd ..
-    docker compose up -d
-    ```
+```bash
+python3 -m venv .venv
+source .venv/bin/activate   
+```
