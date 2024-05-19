@@ -28,6 +28,10 @@
     cd ../db_repl
     docker build -t db_repl_image .
     ```
+4. **Добавьте вашего пользователя в группу docker:**
+    ```bash
+    usermod -aG docker <имя пользователя>
+    ```
 
 5. **Запустите контейнеры:**
     ```bash
