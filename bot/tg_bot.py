@@ -422,7 +422,7 @@ def get_services(update: Update, context):
 
     try:
         ssh_client.connect(hostname=SSH_HOST, port=SSH_PORT, username=SSH_USERNAME, password=SSH_PASSWORD)
-        stdin, stdout, stderr = ssh_client.exec_command("systemctl | head -n 20")
+        stdin, stdout, stderr = ssh_client.exec_command("systemctl list-units --type=service --state=running")
         services_info = stdout.read().decode("utf-8")
         update.message.reply_text(services_info)
     except Exception as e:
