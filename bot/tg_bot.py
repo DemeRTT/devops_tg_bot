@@ -441,7 +441,7 @@ def get_repl_logs(update: Update, context):
 
     try:
         ssh_client.connect(hostname=SSH_HOST, port=SSH_PORT, username=SSH_USERNAME, password=SSH_PASSWORD)
-        stdin, stdout, stderr = ssh_client.exec_command(f'tail -n 1000 /var/log/postgresql/postgresql-{version}-main.log | grep repl')
+        stdin, stdout, stderr = ssh_client.exec_command(f'tail -n 1000 /var/log/postgresql/postgresql-{version}-main.log | grep -i repl')
         data = stdout.read() + stderr.read()
         data = str(data.decode('utf-8')).replace('\\n', '\n').replace('\\t', '\t')[:-1]
         update.message.reply_text(data[-4000:])
