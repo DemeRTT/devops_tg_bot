@@ -48,7 +48,7 @@ def helpCommand(update: Update, context):
     /find_email - Найти email-адреса в тексте
     /verify_password - Проверить сложность пароля
     
-    Список команд при SSH-подключении:
+    Список команд при удалённом подключении:
     /get_release - Релиз системы
     /get_uname - Архитектура процессора и версия ядра 
     /get_uptime - Время работы
