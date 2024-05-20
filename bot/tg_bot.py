@@ -423,7 +423,7 @@ def get_services(update: Update, context):
 
     try:
         ssh_client.connect(hostname=SSH_HOST, port=SSH_PORT, username=SSH_USERNAME, password=SSH_PASSWORD)
-        stdin, stdout, stderr = ssh_client.exec_command("systemctl | head -n 20")
+        stdin, stdout, stderr = ssh_client.exec_command("systemctl list-units --type=service --state=running")
         services_info = stdout.read().decode("utf-8")
         update.message.reply_text(services_info)
     except Exception as e:
@@ -441,7 +441,7 @@ def get_repl_logs(update: Update, context):
 
     try:
         ssh_client.connect(hostname=SSH_HOST, port=SSH_PORT, username=SSH_USERNAME, password=SSH_PASSWORD)
-        stdin, stdout, stderr = ssh_client.exec_command(f'cat /var/log/postgresql/postgresql-{version}-main.log | tail -n 20')
+        stdin, stdout, stderr = ssh_client.exec_command(f'tail -n 1000 /var/log/postgresql/postgresql-{version}-main.log | grep repl')
         data = stdout.read() + stderr.read()
         data = str(data.decode('utf-8')).replace('\\n', '\n').replace('\\t', '\t')[:-1]
         update.message.reply_text(data[-4000:])
