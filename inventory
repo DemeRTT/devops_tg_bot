@@ -1,6 +1,6 @@
 all:
   vars:
-    GIT: https://github.com/DemeRTT/devops_tg_bot
+    GIT: https://github.com/DemeRTT/devops_tg_bot.git
     WORKDIR: /root/ansible
     RM_HOST: <ip машины, на которой развернётся бот и БД>
     RM_PORT: 22
