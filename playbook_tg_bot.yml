@@ -95,7 +95,7 @@
         host all all {{ hostvars[inventory_hostname]['ansible_host'] }}/32 trust
 
   - name: changing the owner of a file postgres
-    command: chmod o+r /var/log/postgresql/postgresql-14-main.log
+    command: chmod o+r /var/log/postgresql/postgresql-{{ hostvars[inventory_hostname]['POSTGRES_VERSION'] }}-main.log
 
   - name: restarting postgresql with the main database
     service:
@@ -119,7 +119,7 @@
     command: rm -rf /var/lib/postgresql/{{ hostvars[inventory_hostname]['POSTGRES_VERSION'] }}/
 
   - name: backup from host1
-    command: pg_basebackup -R -h {{ hostvars[inventory_hostname]['DB_HOST'] }} -D /var/lib/postgresql/{{ hostvars[inventory_hostname]['POSTGRES_VERSION'] }}/main/ -p {{ hostvars[inventory_hostname]['DB_PORT'] }} -U {{ hostvars[inventory_hostname]['DB_REPL_USER'] }}
+    command: pg_basebackup -h {{ hostvars[inventory_hostname]['DB_HOST'] }} -D /var/lib/postgresql/{{ hostvars[inventory_hostname]['POSTGRES_VERSION'] }}/main/ -p {{ hostvars[inventory_hostname]['DB_PORT'] }} -U {{ hostvars[inventory_hostname]['DB_REPL_USER'] }}
     environment:
       PGUSER: "{{ hostvars[inventory_hostname]['DB_REPL_USER'] }}"
       PGPASSWORD: "{{ hostvars[inventory_hostname]['DB_REPL_PASSWORD'] }}"
