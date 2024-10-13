@@ -14,7 +14,7 @@ all:
     DB_REPL_USER: repl_user
     DB_REPL_PASSWORD: 123
     DB_REPL_HOST: <ip машины, на которую реплицируется БД>
-    DB_REPL_PORT: 5432
+    DB_REPL_PORT: 5433
     POSTGRES_VERSION: 14
     TOKEN: <токен тг-бота>
   hosts:  
